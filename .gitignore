@@ -1,0 +1,11 @@
+build
+
+devel
+
+install
+
+.catkin_workspace
+
+*~
+
+.DS_Store
