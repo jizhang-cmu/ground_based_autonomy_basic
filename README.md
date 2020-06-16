@@ -1,5 +1,7 @@
 The repository contains code for collision avoidance to use with ground robots. In an autonomous navigation system, this repository is often at the mid-level, above the state estimation module and below the high-level planning module. To help users start easily, the repository includes a vehicle simulator and does not need to run onboard a real robot. The code implementation is targeted at executing on a robot computer with limited processing power. Except for the vehicle simulator, all code in the repository is optimized and lightweight. The code operates in two modes: *autonomy mode* takes waypoints as the input and navigates towards the waypoints while avoiding obstacles along the way, *smart joystick mode* takes commands from an operator through a joystick controller and avoids obstacles that the robot encounters. The *smart joystick mode* is often useful in debugging the navigation system and is highly recommended.
 
+<p style="margin-top: 30px; margin-left: 60px; margin-right: 60px; margin-bottom: 30px" align="middle"><iframe width="720" height="405" src="https://www.youtube.com/embed/JgJG3Y8JCt0" frameborder="0" allowfullscreen></iframe></p>
+
 # Prerequisite
 
 To use *smart joystick mode*, the system requires a PS3 controller (*autonomy mode* can run without a controller). Most PS3 controllers with a USB interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller.
