@@ -54,7 +54,7 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 The system is setup to use a vehicle simulator for a quick start. The vehicle simulator generates 'nav_msgs::Odometry' typed state estimation messages on ROS topic '/state_estimation' and 'sensor_msgs::PointCloud2' typed registered scan messages on ROS topic '/velodyne_points'. The scans are simulated based on a Velodyne VLP-16 Lidar and are registered in the '/map' frame. To use the code with a real robot, replace the vehicle simulator by the state estimation module on the robot and forward the 'geometry_msgs::TwistStamped' typed command velocity messages on ROS topic '/cmd_vel' to the motion controller.
 
-To use the code with a high-level planner, e.g. a route planner, follow the example code in 'src/waypoint_example/src/waypointExample.cpp' to send waypoints, speed, and navigation boundaries.
+To use the code with a high-level planner, e.g. a route planner, follow the example code in 'src/waypoint_example/src/waypointExample.cpp' to send waypoints, speed, and navigation boundaries. The navigation boundaries in a message are considered connected if they are at the same height and disconnected if at different height.
 
 The system can take data from additional range sensors for collision avoidance. The data can be sent in as 'sensor_msgs::PointCloud2' typed messages on ROS topic '/added_obstacles'. The points in the messages are in the '/map' frame.
 
