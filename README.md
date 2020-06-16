@@ -66,7 +66,7 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 ```<include file='$(find terrain_analysis)/launch/terrain_analysis.launch' />```
 
-and set 'useTerrainAnalysis = true' in 'src/local_planner/launch/local_planner.launch'. With terrain analysis running, clicking the clear-terrain-map button on the controller reinitializes the terrain analysis. Alternatively, one can send a 'std_msgs::Float32' typed message on ROS topic '/map_clearing'. The number in the message indicates the radius of the area to be cleared. Note that terrain analysis does require scans to be registered well. If the state estimation on the robot is imprecise and scans are misregistered, the terrain analysis will likely sacrifice.
+set 'useTerrainAnalysis = true' and adjust 'obstacleHeightThre' in 'src/local_planner/launch/local_planner.launch'. With terrain analysis running, clicking the clear-terrain-map button on the controller reinitializes the terrain analysis. Alternatively, one can send a 'std_msgs::Float32' typed message on ROS topic '/map_clearing'. The number in the message indicates the radius of the area to be cleared. Note that terrain analysis does require scans to be registered well. If the state estimation on the robot is imprecise and scans are misregistered, the terrain analysis will likely sacrifice.
 
 **Handling negative obstacles**: While the best way to handle negative obstacles is mounting a sensor high up on the robot looking downward into the negative obstacles, a quick solution is turning on terrain analysis and setting 'noDataObstacle = true' in 'src/terrain_analysis/launch/terrain_analysis.launch'. Negative obstacles usually cause some areas to have no data. The system will consider these areas to be non-traversable.
 
