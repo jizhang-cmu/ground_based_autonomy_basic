@@ -54,25 +54,28 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 # Advanced
 
-The system is setup to use a vehicle simulator for a quick start. The vehicle simulator generates 'nav_msgs::Odometry' typed state estimation messages on ROS topic '/state_estimation' and 'sensor_msgs::PointCloud2' typed registered scan messages on ROS topic '/velodyne_points'. The scans are simulated based on a Velodyne VLP-16 Lidar and are registered in the '/map' frame. To use the code with a real robot, replace the vehicle simulator by the state estimation module on the robot and forward the 'geometry_msgs::TwistStamped' typed command velocity messages on ROS topic '/cmd_vel' to the motion controller.
+**Running on real robot**: The system is setup to use a vehicle simulator for a quick start. The vehicle simulator generates 'nav_msgs::Odometry' typed state estimation messages on ROS topic '/state_estimation' and 'sensor_msgs::PointCloud2' typed registered scan messages on ROS topic '/velodyne_points'. The scans are simulated based on a Velodyne VLP-16 Lidar and are registered in the '/map' frame. To use the code with a real robot, replace the vehicle simulator by the state estimation module on the robot and forward the 'geometry_msgs::TwistStamped' typed command velocity messages on ROS topic '/cmd_vel' to the motion controller.
 
-To use the code with a high-level planner, e.g. a route planner, follow the example code in 'src/waypoint_example/src/waypointExample.cpp' to send waypoints, speed, and navigation boundaries. The navigation boundaries in a message are considered connected if they are at the same height and disconnected if at different height.
+**Integrating with high-level planner**: To use the code with a high-level planner, e.g. a route planner, follow the example code in 'src/waypoint_example/src/waypointExample.cpp' to send waypoints, speed, and navigation boundaries. The navigation boundaries in a message are considered connected if they are at the same height and disconnected if at different height.
 
-The system can take data from additional range sensors for collision avoidance. The data can be sent in as 'sensor_msgs::PointCloud2' typed messages on ROS topic '/added_obstacles'. The points in the messages are in the '/map' frame.
+**Adding additional sensors**: The system can take data from additional sensors for collision avoidance. The data can be sent in as 'sensor_msgs::PointCloud2' typed messages on ROS topic '/added_obstacles'. The points in the messages are in the '/map' frame.
 
-If driving over 3D terrains, terrain analysis is necessary. To launch terrain analysis, uncomment
+**Obstacle checking on/off**: Obstacle checking can be turned on and off with a 'std_msgs::Bool' typed message on ROS topic '/check_obstacle'. The number in the message indicates obstacle checking is on or off. Alternatively, one can hold the obstacle-check button on the controller to turn off obstacle checking.
+
+**Turning on terrain analysis**: If driving over 3D terrains, terrain analysis is necessary. To launch terrain analysis, uncomment
 
 ```<include file='$(find terrain_analysis)/launch/terrain_analysis.launch' />```
 
 and set 'useTerrainAnalysis = true' in 'src/local_planner/launch/local_planner.launch'. With terrain analysis running, clicking the clear-terrain-map button on the controller reinitializes the terrain analysis. Alternatively, one can send a 'std_msgs::Float32' typed message on ROS topic '/map_clearing'. The number in the message indicates the radius of the area to be cleared. Note that terrain analysis does require scans being registered well. If the state estimation on the robot is imprecise and scans are misregistered, the terrain analysis will likely sacrifice.
 
-Obstacle checking can be turned on and off with a 'std_msgs::Bool' typed message on ROS topic '/check_obstacle'. The number in the message indicates obstacle checking is on or off. Alternatively, one can hold the obstacle-check button on the controller to turn off obstacle checking.
+**Handling negative obstacles**: While the best way to handle negative obstacles is mounting a sensor high up on the robot looking downward into the negative obstacles, a quick solution is turning on terrain analysis and setting 'noDataObstacle = true' in 'src/terrain_analysis/launch/terrain_analysis.launch'.
+Negative obstacles usually cause some areas to have no data. The system will consider these areas as non-traversable.
 
-To change driving speed, set 'maxSpeed', 'autonomySpeed', and 'maxAccel' in 'src/local_planner/launch/local_planner.launch'. Other path following control parameters are in the same file. If setting 'twoWayDrive = false', the robot will only drive forward.
+**Adjusting path following control**: To change driving speed, set 'maxSpeed', 'autonomySpeed', and 'maxAccel' in 'src/local_planner/launch/local_planner.launch'. Other path following control parameters such as 'maxYawRate', 'yawRateGain', and 'lookAheadDis' are in the same file. If setting 'twoWayDrive = false', the robot will only drive forward.
 
-The code uses motion primitives generated by a MatLab script. To change the robot size, set 'searchRadius' in 'src/local_planner/paths/path_generator.m' and run the MatLab script. This will generate a set of path files in the same folder.
+**Changing robot size**: The code uses motion primitives generated by a MatLab script. To change the robot size, set 'searchRadius' in 'src/local_planner/paths/path_generator.m' and run the MatLab script. This will generate a set of path files in the same folder.
 
-The system uses a differential motion model. Adapting to other motion models, e.g. a car-like motion model, needs more work.
+**About motion model**: The system uses a differential motion model. Adapting to other motion models, e.g. a car-like motion model, needs more work.
 
 # Reference
 
