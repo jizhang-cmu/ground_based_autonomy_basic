@@ -2,9 +2,9 @@ The repository contains code for collision avoidance to use with ground robots.
 
 # Prerequisite
 
-To use *smart joystick mode*, the system requires a PlayStation controller (*autonomy mode* can run without a controller). Most PlayStation controllers would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller.
+To use *smart joystick mode*, the system requires a PS3 controller (*autonomy mode* can run without a controller). Most PS3 controllers with a USB interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller.
 
-<img src="img/ps_controller.jpg" alt="PlayStation Controller" width="55%"/>
+<img src="img/ps3_controller.jpg" alt="PS3 Controller" width="55%"/>
 
 Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
 
