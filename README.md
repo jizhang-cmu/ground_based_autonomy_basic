@@ -14,7 +14,7 @@ The code runs on a Ubuntu 18.04 computer installed with ROS Melodic. Install ROS
 
 ```sudo apt install ros-melodic-joystick-drivers```
 
-make sure to add the username to dialout group (change 'username' in the command line) and reboot the computer,
+Make sure to add the username to dialout group (change 'username' in the command line) and reboot the computer,
 
 ```sudo adduser username dialout```
 
