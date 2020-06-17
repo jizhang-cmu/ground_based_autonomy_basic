@@ -20,6 +20,16 @@ Make sure to add the username to dialout group (change 'username' in the command
 
 ```sudo adduser username dialout```
 
+To verify the controller is working, launch ROS joystick driver,
+
+```roslaunch ps3joy ps3.launch```
+
+In another terminal,
+
+```rostopic echo /joy```
+
+Press any button on the controller and joystick messages should be displayed in the terminal.
+
 # Quick Start
 
 Clone the repository. In a terminal, go to the folder and compile,
