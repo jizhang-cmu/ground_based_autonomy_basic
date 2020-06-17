@@ -193,12 +193,13 @@ int main(int argc, char** argv)
     odomData.twist.twist.linear.x = vehicleSpeed;
     pubVehicleOdom.publish(odomData);
 
+    // publish 200Hz tf messages
     odomTrans.stamp_ = odomTime;
     odomTrans.setRotation(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w));
     odomTrans.setOrigin(tf::Vector3(vehicleX, vehicleY, vehicleZ));
     tfBroadcaster.sendTransform(odomTrans);
 
-    // publish 200Hz Gazebo model state messages
+    // publish 200Hz Gazebo model state messages (this is for Gazebo simulation)
     stateData.pose.position.x = vehicleX;
     stateData.pose.position.y = vehicleY;
     stateData.pose.position.z = vehicleZ;

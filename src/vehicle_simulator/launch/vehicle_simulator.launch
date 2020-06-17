@@ -1,11 +1,5 @@
 <launch>
 
-  <include file="$(find ps3joy)/launch/ps3.launch" />
-
-  <include file="$(find local_planner)/launch/local_planner.launch" />
-
-  <!--include file="$(find waypoint_example)/launch/waypoint_example.launch" /-->
-
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="false"/>

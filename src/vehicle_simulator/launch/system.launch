@@ -1,0 +1,13 @@
+<launch>
+
+  <include file="$(find ps3joy)/launch/ps3.launch" />
+
+  <include file="$(find local_planner)/launch/local_planner.launch" />
+
+  <!--include file="$(find terrain_analysis)/launch/terrain_analysis.launch" /-->
+
+  <!--include file="$(find waypoint_example)/launch/waypoint_example.launch" /-->
+
+  <include file="$(find vehicle_simulator)/launch/vehicle_simulator.launch" />
+
+</launch>
