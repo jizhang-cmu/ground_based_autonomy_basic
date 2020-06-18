@@ -28,7 +28,7 @@ In another terminal,
 
 ```rostopic echo /joy```
 
-Press any button on the controller and joystick messages should be displayed in the terminal.
+Press any button on the controller and joystick messages should display in the terminal.
 
 # Quick Start
 
