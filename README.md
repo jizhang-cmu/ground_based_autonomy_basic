@@ -60,7 +60,7 @@ Hold the mode-switch button on the controller and at the same time push the righ
 
 <img src="img/waypoint_following.jpg" alt="Waypoint Following" width="75%"/>
 
-If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/launch/local_planner.launch'. The system will start in *autonomy mode*. Note that you can set 'autonomyMode = true' even if a controller is plugged-in. Pressing any button on the controller will bring the system to *smart joystick mode* and holding the mode-switch button will bring the system back to *autonomy mode*.
+If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/launch/local_planner.launch'. Launch the 'waypoint_example' together with the system. The system will start in *autonomy mode*. Note that you can set 'autonomyMode = true' even if a controller is plugged-in. Pressing any button on the controller will bring the system to *smart joystick mode* and holding the mode-switch button will bring the system back to *autonomy mode*.
 
 # Advanced
 
