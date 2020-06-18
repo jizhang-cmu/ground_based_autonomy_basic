@@ -32,6 +32,8 @@ const double PI = 3.1415926;
 
 double sensorOffsetX = 0;
 double sensorOffsetY = 0;
+int pubSkipNum = 1;
+int pubSkipCount = 0;
 bool twoWayDrive = true;
 double lookAheadDis = 0.5;
 double yawRateGain = 7.5;
@@ -85,7 +87,6 @@ int pathPointID = 0;
 int pathInit = false;
 bool navFwd = true;
 double switchTime = 0;
-double watchDogTime = 0;
 
 nav_msgs::Path path;
 
@@ -111,8 +112,6 @@ void odomHandler(const nav_msgs::Odometry::ConstPtr& odomIn)
   if ((fabs(odomIn->twist.twist.angular.x) > inclRateThre * PI / 180.0 || fabs(odomIn->twist.twist.angular.y) > inclRateThre * PI / 180.0) && useInclRateToSlow) {
     slowInitTime = odomIn->header.stamp.toSec();
   }
-
-  watchDogTime = ros::Time::now().toSec();
 }
 
 void pathHandler(const nav_msgs::Path::ConstPtr& pathIn)
@@ -183,6 +182,7 @@ int main(int argc, char** argv)
 
   nhPrivate.getParam("sensorOffsetX", sensorOffsetX);
   nhPrivate.getParam("sensorOffsetY", sensorOffsetY);
+  nhPrivate.getParam("pubSkipNum", pubSkipNum);
   nhPrivate.getParam("twoWayDrive", twoWayDrive);
   nhPrivate.getParam("lookAheadDis", lookAheadDis);
   nhPrivate.getParam("yawRateGain", yawRateGain);
@@ -306,11 +306,6 @@ int main(int argc, char** argv)
       float joySpeed3 = joySpeed2;
       if (odomTime < slowInitTime + slowTime && slowInitTime > 0) joySpeed3 *= slowRate;
 
-      if (ros::Time::now().toSec() - watchDogTime > 0.5) {
-        joySpeed3 = 0;
-        vehicleYawRate = 0;
-      }
-
       if (fabs(dirDiff) < dirDiffThre && dis > stopDisThre) {
         if (vehicleSpeed < joySpeed3) vehicleSpeed += maxAccel / 100.0;
         else if (vehicleSpeed > joySpeed3) vehicleSpeed -= maxAccel / 100.0;
@@ -327,12 +322,15 @@ int main(int argc, char** argv)
       if (safetyStop >= 1) vehicleSpeed = 0;
       if (safetyStop >= 2) vehicleYawRate = 0;
 
-      if (odomTime > 0) {
+      pubSkipCount--;
+      if (pubSkipCount < 0) {
         cmd_vel.header.stamp = ros::Time().fromSec(odomTime);
         if (fabs(vehicleSpeed) <= maxAccel / 100.0) cmd_vel.twist.linear.x = 0;
         else cmd_vel.twist.linear.x = vehicleSpeed;
         cmd_vel.twist.angular.z = vehicleYawRate;
         pubSpeed.publish(cmd_vel);
+
+        pubSkipCount = pubSkipNum;
       }
     }
 

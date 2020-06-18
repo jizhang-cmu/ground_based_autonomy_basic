@@ -57,6 +57,7 @@
   <node pkg="local_planner" type="pathFollower" name="pathFollower" output="screen" required="true">
     <param name="sensorOffsetX" value="$(arg sensorOffsetX)" />
     <param name="sensorOffsetY" value="$(arg sensorOffsetY)" />
+    <param name="pubSkipNum" type="int" value="1" />
     <param name="twoWayDrive" value="$(arg twoWayDrive)" />
     <param name="lookAheadDis" type="double" value="0.5" />
     <param name="yawRateGain" type="double" value="7.5" />
