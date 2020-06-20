@@ -74,7 +74,7 @@ and uncomment
 
 ```<include file="$(find loam_interface)/launch/loam_interface.launch" />```
 
-in  'src/vehicle_simulator/launch/system.launch'. This will launch the 'loam_interface' - a bridge to connect the ROS topics and flip the coordinate frames . If using a modified version of LOAM, adjust 'stateEstimationTopic', 'registeredScanTopic', 'flipStateEstimation', and 'flipRegisteredScan' in  'src/loam_interface/launch/loam_interface.launch' to configure the ROS topics and coordinate frames. If playing bagfiles with lidar and IMU data instead of running on a real robot, make sure to set 'use_sim_time = true'. In a terminal,
+in  'src/vehicle_simulator/launch/system.launch'. This will stop launching the vehicle simulator and launch the 'loam_interface' - a bridge to connect the ROS topics and flip the coordinate frames . If using a modified version of LOAM, adjust 'stateEstimationTopic', 'registeredScanTopic', 'flipStateEstimation', and 'flipRegisteredScan' in  'src/loam_interface/launch/loam_interface.launch' to configure the ROS topics and coordinate frames. If playing bagfiles with lidar and optionally IMU data instead of running on a real robot, make sure to set 'use_sim_time = true'. In a terminal,
 
 ```roscore```
 
