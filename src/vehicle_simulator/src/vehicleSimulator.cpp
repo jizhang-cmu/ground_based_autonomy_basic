@@ -106,7 +106,7 @@ void scanHandler(const sensor_msgs::PointCloud2::ConstPtr& scanIn)
     scanData->points[i].z = pointZ;
   }
 
-  // publish 5Hz scan messages with registered laser data
+  // publish 5Hz registered scan messages
   sensor_msgs::PointCloud2 scanData2;
   pcl::toROSMsg(*scanData, scanData2);
   scanData2.header.stamp = ros::Time().fromSec(odomRecTime);

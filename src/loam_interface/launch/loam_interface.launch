@@ -1,0 +1,10 @@
+<launch>
+
+  <node pkg="loam_interface" type="loamInterface" name="loamInterface" output="screen" required="true">
+    <param name="stateEstimationTopic" type="string" value="/integrated_to_init" />
+    <param name="registeredScanTopic" type="string" value="/velodyne_cloud_registered" />
+    <param name="flipStateEstimation" type="bool" value="true" />
+    <param name="flipRegisteredScan" type="bool" value="true" />
+  </node>
+
+</launch>

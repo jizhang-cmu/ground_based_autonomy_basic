@@ -30,6 +30,4 @@
     <param name="sensorOffsetY" value="$(arg sensorOffsetY)" />
   </node>
 
-  <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="true"/>
-
 </launch>

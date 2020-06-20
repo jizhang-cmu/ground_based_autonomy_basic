@@ -6,4 +6,8 @@
 
   <include file="$(find vehicle_simulator)/launch/vehicle_simulator.launch" />
 
+  <!--include file="$(find loam_interface)/launch/loam_interface.launch" /-->
+
+  <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="true"/>
+
 </launch>

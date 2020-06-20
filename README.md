@@ -66,6 +66,26 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 **Running on real robot**: The system is setup to use a vehicle simulator for a quick start. The vehicle simulator publishes 'nav_msgs::Odometry' typed state estimation messages on ROS topic '/state_estimation', '/tf' messages, and 'sensor_msgs::PointCloud2' typed registered scan messages on ROS topic '/velodyne_points'. The scans are simulated based on a Velodyne VLP-16 Lidar and are registered in the '/map' frame. To use the code with a real robot, replace the vehicle simulator by the state estimation module on the robot and forward the 'geometry_msgs::TwistStamped' typed command velocity messages on ROS topic '/cmd_vel' to the motion controller. Adjust 'minRelZ' and 'maxRelZ' in 'src/local_planner/launch/local_planner.launch' to crop off the ground and ceiling in the registered scans w.r.t. the sensor.
 
+**Integrating with LOAM**: The original implementation of Lidar Odometry and Mapping (LOAM) uses the camera coordinate convention (x-left, y-up, z-front). This repository uses the standard ground robot convention (x-front, y-left, z-up). If using the original version of LOAM for state estimation, comment out
+
+```<!--include file="$(find vehicle_simulator)/launch/vehicle_simulator.launch" /-->```
+
+and uncomment
+
+```<include file="$(find loam_interface)/launch/loam_interface.launch" />```
+
+in  'src/vehicle_simulator/launch/system.launch'. This will launch the 'loam_interface' - a bridge to connect the ROS topics and flip the coordinate frames . If using a modified version of LOAM, adjust 'stateEstimationTopic', 'registeredScanTopic', 'flipStateEstimation', and 'flipRegisteredScan' in  'src/loam_interface/launch/loam_interface.launch' to configure the ROS topics and coordinate frames. If playing bagfiles with lidar and IMU data instead of running on a real robot, make sure to set 'use_sim_time = true'. In a terminal,
+
+```roscore```
+
+In a second terminal,
+
+```rosparam set use_sim_time true```
+
+Launch LOAM and the system side by side. Then, play bagfiles with '--clock' flag (change 'filename' in the command line),
+
+```rosbag play --clock filename.bag```
+
 **Integrating with high-level planner**: To use the code with a high-level planner, e.g. a route planner, follow the example code in 'src/waypoint_example/src/waypointExample.cpp' to send waypoints, speed, and navigation boundaries. The navigation boundaries in a message are considered connected if they are at the same height and disconnected if at different height.
 
 **Adding additional sensors**: The system can take data from additional sensors for collision avoidance. The data can be sent in as 'sensor_msgs::PointCloud2' typed messages on ROS topic '/added_obstacles'. The points in the messages are in the '/map' frame.
