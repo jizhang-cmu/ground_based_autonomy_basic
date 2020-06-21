@@ -92,7 +92,7 @@ Launch LOAM and the system side by side. Then, play bagfiles with '--clock' flag
 
 **Obstacle checking on/off**: Obstacle checking can be turned on and off with a 'std_msgs::Bool' typed message on ROS topic '/check_obstacle'. The number in the message indicates obstacle checking is on or off. Alternatively, one can hold the obstacle-check button on the controller to turn off obstacle checking.
 
-**Turning on terrain analysis**: If driving over 3D terrains, terrain analysis is necessary. To launch terrain analysis, uncomment
+**Turning on terrain analysis**: The system uses registered scans for collision avoidance by default. If driving over 3D terrains, terrain analysis is necessary. To launch terrain analysis, uncomment
 
 ```<include file='$(find terrain_analysis)/launch/terrain_analysis.launch' />```
 
