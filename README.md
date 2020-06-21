@@ -78,7 +78,7 @@ in  'src/vehicle_simulator/launch/system.launch'. This will stop launching th
 
 ```roscore```
 
-In a second terminal,
+In another terminal,
 
 ```rosparam set use_sim_time true```
 
