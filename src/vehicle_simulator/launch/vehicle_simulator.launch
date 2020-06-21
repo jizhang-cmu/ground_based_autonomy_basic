@@ -1,5 +1,9 @@
 <launch>
 
+  <arg name="sensorOffsetX" default="0"/>
+  <arg name="sensorOffsetY" default="0"/>
+  <arg name="vehicleZ" default="0.75"/>
+
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="false"/>
@@ -7,9 +11,6 @@
   <arg name="debug" default="false"/>
   <arg name="verbose" default="false"/>
   <arg name="world_name" default="$(find vehicle_simulator)/world/example.world"/>
-
-  <arg name="sensorOffsetX" default="0"/>
-  <arg name="sensorOffsetY" default="0"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
     <arg name="paused" value="$(arg paused)"/>
@@ -28,6 +29,7 @@
     <param name="use_gazebo_time" type="bool" value="false" />
     <param name="sensorOffsetX" value="$(arg sensorOffsetX)" />
     <param name="sensorOffsetY" value="$(arg sensorOffsetY)" />
+    <param name="vehicleZ" value="$(arg vehicleZ)" />
   </node>
 
 </launch>

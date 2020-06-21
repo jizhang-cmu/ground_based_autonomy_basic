@@ -129,6 +129,7 @@ int main(int argc, char** argv)
   nhPrivate.getParam("use_gazebo_time", use_gazebo_time);
   nhPrivate.getParam("sensorOffsetX", sensorOffsetX);
   nhPrivate.getParam("sensorOffsetY", sensorOffsetY);
+  nhPrivate.getParam("vehicleZ", vehicleZ);
 
   ros::Subscriber subScan = nh.subscribe<sensor_msgs::PointCloud2>
                             ("/velodyne_points", 2, scanHandler);
