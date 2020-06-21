@@ -64,7 +64,7 @@ int safetyStop = 0;
 
 float vehicleX = 0;
 float vehicleY = 0;
-float vehicleZ = 0.5;
+float vehicleZ = 0;
 float vehicleRoll = 0;
 float vehiclePitch = 0;
 float vehicleYaw = 0;
