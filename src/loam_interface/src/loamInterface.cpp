@@ -31,6 +31,7 @@ string stateEstimationTopic = "/integrated_to_init";
 string registeredScanTopic = "/velodyne_cloud_registered";
 bool flipStateEstimation = true;
 bool flipRegisteredScan = true;
+bool sendTF = true;
 
 pcl::PointCloud<pcl::PointXYZI>::Ptr laserCloud(new pcl::PointCloud<pcl::PointXYZI>());
 
@@ -66,12 +67,14 @@ void odometryHandler(const nav_msgs::Odometry::ConstPtr& odom)
   pubOdometryPointer->publish(odomData);
 
   // publish tf messages
-  odomTrans.stamp_ = odom->header.stamp;
-  odomTrans.frame_id_ = "/map";
-  odomTrans.child_frame_id_ = "/sensor";
-  odomTrans.setRotation(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w));
-  odomTrans.setOrigin(tf::Vector3(odomData.pose.pose.position.x, odomData.pose.pose.position.y, odomData.pose.pose.position.z));
-  tfBroadcasterPointer->sendTransform(odomTrans);
+  if (sendTF) {
+    odomTrans.stamp_ = odom->header.stamp;
+    odomTrans.frame_id_ = "/map";
+    odomTrans.child_frame_id_ = "/sensor";
+    odomTrans.setRotation(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w));
+    odomTrans.setOrigin(tf::Vector3(odomData.pose.pose.position.x, odomData.pose.pose.position.y, odomData.pose.pose.position.z));
+    tfBroadcasterPointer->sendTransform(odomTrans);
+  }
 }
 
 void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudIn)
@@ -107,6 +110,7 @@ int main(int argc, char** argv)
   nhPrivate.getParam("registeredScanTopic", registeredScanTopic);
   nhPrivate.getParam("flipStateEstimation", flipStateEstimation);
   nhPrivate.getParam("flipRegisteredScan", flipRegisteredScan);
+  nhPrivate.getParam("sendTF", sendTF);
 
   ros::Subscriber subOdometry = nh.subscribe<nav_msgs::Odometry> (stateEstimationTopic, 5, odometryHandler);
 
