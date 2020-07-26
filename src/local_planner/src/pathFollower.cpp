@@ -84,7 +84,7 @@ double joyTime = 0;
 double slowInitTime = 0;
 double stopInitTime = false;
 int pathPointID = 0;
-int pathInit = false;
+bool pathInit = false;
 bool navFwd = true;
 double switchTime = 0;
 
