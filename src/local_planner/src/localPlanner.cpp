@@ -220,13 +220,13 @@ void joystickHandler(const sensor_msgs::Joy::ConstPtr& joy)
 
   if (joy->axes[4] < 0 && !twoWayDrive) joySpeed = 0;
 
-  if (joy->axes[2] >= 0) {
+  if (joy->axes[2] > -0.1) {
     autonomyMode = false;
   } else {
     autonomyMode = true;
   }
 
-  if (joy->axes[5] >= 0) {
+  if (joy->axes[5] > -0.1) {
     checkObstacle = true;
   } else {
     checkObstacle = false;

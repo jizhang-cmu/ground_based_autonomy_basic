@@ -150,7 +150,7 @@ void joystickHandler(const sensor_msgs::Joy::ConstPtr& joy)
     joyYaw = 0;
   }
 
-  if (joy->axes[2] >= 0) {
+  if (joy->axes[2] > -0.1) {
     autonomyMode = false;
   } else {
     autonomyMode = true;
