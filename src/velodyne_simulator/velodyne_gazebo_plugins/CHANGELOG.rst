@@ -2,6 +2,33 @@
 Changelog for package velodyne_gazebo_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.10 (2020-08-03)
+-------------------
+* Change PointCloud2 structure to match updated velodyne_pointcloud package
+* Bump minimum CMake version to 3.0.2 in all CMakeLists.txt
+* Contributors: Kevin Hallenbeck, Micho Radovnikovich
+
+1.0.9 (2019-03-08)
+------------------
+* Added min_intensity parameter to support cliping of low intensity returns
+* Contributors: Jonathan Wheare, Kevin Hallenbeck
+
+1.0.8 (2018-09-08)
+------------------
+* Changed iteration order to more closely represent the live velodyne driver
+* Contributors: Kevin Hallenbeck
+
+1.0.7 (2018-07-03)
+------------------
+* Added GPU support
+* Added support for Gazebo 9
+* Improved behavior of max range calculation
+* Removed trailing slashes in robot namespace
+* Fixed resolution of 1 not supported
+* Fixed issue with only 1 vert or horiz ray
+* Fixed cmake exports and warning
+* Contributors: Kevin Hallenbeck, Jacob Seibert, Naoki Mizuno
+
 1.0.6 (2017-10-17)
 ------------------
 * Use robotNamespace as prefix for PointCloud2 topic frame_id by default

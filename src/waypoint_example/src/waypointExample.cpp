@@ -175,14 +175,14 @@ int main(int argc, char** argv)
 
   ros::Publisher pubWaypoint = nh.advertise<geometry_msgs::PointStamped> ("/way_point", 5);
   geometry_msgs::PointStamped waypointMsgs;
-  waypointMsgs.header.frame_id = "/map";
+  waypointMsgs.header.frame_id = "map";
 
   ros::Publisher pubSpeed = nh.advertise<std_msgs::Float32> ("/speed", 5);
   std_msgs::Float32 speedMsgs;
 
   ros::Publisher pubBoundary = nh.advertise<geometry_msgs::PolygonStamped> ("/navigation_boundary", 5);
   geometry_msgs::PolygonStamped boundaryMsgs;
-  boundaryMsgs.header.frame_id = "/map";
+  boundaryMsgs.header.frame_id = "map";
 
   // read waypoints from file
   readWaypointFile();

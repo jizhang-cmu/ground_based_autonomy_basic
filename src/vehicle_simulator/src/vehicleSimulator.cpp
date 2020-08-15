@@ -21,7 +21,7 @@
 #include <tf/transform_datatypes.h>
 #include <tf/transform_broadcaster.h>
 
-#include <opencv/cv.h>
+#include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
 #include <pcl_conversions/pcl_conversions.h>
@@ -154,7 +154,7 @@ void scanHandler(const sensor_msgs::PointCloud2::ConstPtr& scanIn)
   sensor_msgs::PointCloud2 scanData2;
   pcl::toROSMsg(*scanData, scanData2);
   scanData2.header.stamp = ros::Time().fromSec(odomRecTime);
-  scanData2.header.frame_id = "/map";
+  scanData2.header.frame_id = "map";
   pubScanPointer->publish(scanData2);
 }
 
@@ -296,13 +296,13 @@ int main(int argc, char** argv)
   ros::Publisher pubVehicleOdom = nh.advertise<nav_msgs::Odometry> ("/state_estimation", 5);
 
   nav_msgs::Odometry odomData;
-  odomData.header.frame_id = "/map";
-  odomData.child_frame_id = "/sensor";
+  odomData.header.frame_id = "map";
+  odomData.child_frame_id = "sensor";
 
   tf::TransformBroadcaster tfBroadcaster;
   tf::StampedTransform odomTrans;
-  odomTrans.frame_id_ = "/map";
-  odomTrans.child_frame_id_ = "/sensor";
+  odomTrans.frame_id_ = "map";
+  odomTrans.child_frame_id_ = "sensor";
 
   ros::Publisher pubModelState = nh.advertise<gazebo_msgs::ModelState> ("/gazebo/set_model_state", 5);
   gazebo_msgs::ModelState stateData;

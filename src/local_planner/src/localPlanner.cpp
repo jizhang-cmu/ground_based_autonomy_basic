@@ -843,7 +843,7 @@ int main(int argc, char** argv)
           }
 
           path.header.stamp = ros::Time().fromSec(odomTime);
-          path.header.frame_id = "/vehicle";
+          path.header.frame_id = "vehicle";
           pubPath.publish(path);
 
           #if PLOTPATHSET == 1
@@ -889,7 +889,7 @@ int main(int argc, char** argv)
           sensor_msgs::PointCloud2 freePaths2;
           pcl::toROSMsg(*freePaths, freePaths2);
           freePaths2.header.stamp = ros::Time().fromSec(odomTime);
-          freePaths2.header.frame_id = "/vehicle";
+          freePaths2.header.frame_id = "vehicle";
           pubFreePaths.publish(freePaths2);
           #endif
         }
@@ -915,7 +915,7 @@ int main(int argc, char** argv)
         path.poses[0].pose.position.z = 0;
 
         path.header.stamp = ros::Time().fromSec(odomTime);
-        path.header.frame_id = "/vehicle";
+        path.header.frame_id = "vehicle";
         pubPath.publish(path);
 
         #if PLOTPATHSET == 1
@@ -923,7 +923,7 @@ int main(int argc, char** argv)
         sensor_msgs::PointCloud2 freePaths2;
         pcl::toROSMsg(*freePaths, freePaths2);
         freePaths2.header.stamp = ros::Time().fromSec(odomTime);
-        freePaths2.header.frame_id = "/vehicle";
+        freePaths2.header.frame_id = "vehicle";
         pubFreePaths.publish(freePaths2);
         #endif
       }
@@ -931,7 +931,7 @@ int main(int argc, char** argv)
       /*sensor_msgs::PointCloud2 plannerCloud2;
       pcl::toROSMsg(*plannerCloudCrop, plannerCloud2);
       plannerCloud2.header.stamp = ros::Time().fromSec(odomTime);
-      plannerCloud2.header.frame_id = "/vehicle";
+      plannerCloud2.header.frame_id = "vehicle";
       pubLaserCloud.publish(plannerCloud2);*/
     }
 

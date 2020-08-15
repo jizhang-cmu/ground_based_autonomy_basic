@@ -10,11 +10,11 @@ To use *smart joystick mode*, the system requires a PS3 controller (*autonomy m
 
 <img src="img/ps3_controller.jpg" alt="PS3 Controller" width="55%"/>
 
-The code runs on a Ubuntu 18.04 computer installed with ROS Melodic. Install ROS joystick driver,
+The code runs on a Ubuntu 20.04 computer installed with ROS Noetic. Install ROS joystick driver,
 
 ```sudo apt update```
 
-```sudo apt install ros-melodic-joystick-drivers```
+```sudo apt install ros-noetic-joystick-drivers```
 
 Make sure to add the username to dialout group (change 'username' in the command line) and reboot the computer,
 

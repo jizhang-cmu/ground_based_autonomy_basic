@@ -62,14 +62,14 @@ void odometryHandler(const nav_msgs::Odometry::ConstPtr& odom)
   }
 
   // publish odometry messages
-  odomData.header.frame_id = "/map";
-  odomData.child_frame_id = "/sensor";
+  odomData.header.frame_id = "map";
+  odomData.child_frame_id = "sensor";
   pubOdometryPointer->publish(odomData);
 
   // publish tf messages
   odomTrans.stamp_ = odom->header.stamp;
-  odomTrans.frame_id_ = "/map";
-  odomTrans.child_frame_id_ = "/sensor";
+  odomTrans.frame_id_ = "map";
+  odomTrans.child_frame_id_ = "sensor";
   odomTrans.setRotation(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w));
   odomTrans.setOrigin(tf::Vector3(odomData.pose.pose.position.x, odomData.pose.pose.position.y, odomData.pose.pose.position.z));
 
@@ -99,7 +99,7 @@ void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudIn)
   sensor_msgs::PointCloud2 laserCloud2;
   pcl::toROSMsg(*laserCloud, laserCloud2);
   laserCloud2.header.stamp = laserCloudIn->header.stamp;
-  laserCloud2.header.frame_id = "/map";
+  laserCloud2.header.frame_id = "map";
   pubLaserCloudPointer->publish(laserCloud2);
 }
 

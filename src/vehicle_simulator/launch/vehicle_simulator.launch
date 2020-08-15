@@ -35,7 +35,8 @@
     <arg name="world_name" value="$(arg world_name)"/>
   </include>
 
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find vehicle_simulator)/sensor/sensor.urdf.xacro'" />
+  <arg name="gpu" default="false"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find vehicle_simulator)/sensor/sensor.urdf.xacro' gpu:=$(arg gpu)" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param /robot_description -model sensor"/>
 
   <node pkg="vehicle_simulator" type="vehicleSimulator" name="vehicleSimulator" output="screen" required="true">
