@@ -64,9 +64,9 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 # Advanced
 
-**Changing simulation environment**: The vehicle simulator supports custom environments. To change the environment, Replace 'example.world' by 'mesh.world' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Then, modify 'src/vehicle_simulator/world/mesh.world' to update the directory to the mesh file ('/path_to_folder/meshfile.dae' at two places) and offset ('<pose frame=''>0 0 0 0 0 0</pose>' at the bottom). An example mesh file can be downloaded at
+**Changing simulation environment**: The vehicle simulator supports custom environments. To change the environment, replace 'example.world' by 'mesh.world' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Then, modify 'src/vehicle_simulator/world/mesh.world' to update the directory to the mesh file ('/path_to_folder/meshfile.dae' at two places) and offset ('<pose frame=''>0 0 0 0 0 0</pose>' at the bottom). An example mesh file can be downloaded at
 
-```https://github.com/osrf/gazebo_models/blob/master/willowgarage/meshes/willowgarage_collision.dae```
+https://github.com/osrf/gazebo_models/blob/master/willowgarage/meshes/willowgarage_collision.dae
 
 To check the mesh file is loaded correctly, set 'gui = true' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Additionally, if the environment contains 3D terrain, set 'adjustZ = true' and 'adjustIncl = true' to adjust vehicle elevation and inclination according to the terrain. Set 'terrainZ' to the terrain elevation at the start position. Note that terrain analysis needs to run for the feature to be functional. See instruction below to turn on terrain analysis.
 
