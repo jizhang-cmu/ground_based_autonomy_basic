@@ -215,11 +215,11 @@ void terrainCloudHandler(const sensor_msgs::PointCloud2ConstPtr& terrainCloud2)
   cv::Mat matAtB(2, 1, CV_32F, cv::Scalar::all(0));
   cv::Mat matX(2, 1, CV_32F, cv::Scalar::all(0));
 
-  int outlierCount;
+  int inlierNum = 0;
   matX.at<float>(0, 0) = terrainPitch;
   matX.at<float>(1, 0) = terrainRoll;
   for (int iterCount = 0; iterCount < 5; iterCount++) {
-    outlierCount = 0;
+    int outlierCount = 0;
     for (int i = 0; i < terrainCloudDwzSize; i++) {
       point = terrainCloudDwz->points[i];
 
@@ -240,10 +240,13 @@ void terrainCloudHandler(const sensor_msgs::PointCloud2ConstPtr& terrainCloud2)
     matAtA = matAt * matA;
     matAtB = matAt * matB;
     cv::solve(matAtA, matAtB, matX, cv::DECOMP_QR);
+
+    if (inlierNum == terrainCloudDwzSize - outlierCount) break;
+    inlierNum = terrainCloudDwzSize - outlierCount;
   }
 
-  if (terrainCloudDwzSize - outlierCount < minTerrainPointNumIncl ||
-      fabs(matX.at<float>(0, 0)) > maxIncl * PI / 180.0 || fabs(matX.at<float>(1, 0)) > maxIncl * PI / 180.0) {
+  if (inlierNum < minTerrainPointNumIncl || fabs(matX.at<float>(0, 0)) > maxIncl * PI / 180.0 || 
+      fabs(matX.at<float>(1, 0)) > maxIncl * PI / 180.0) {
     terrainValid = false;
   }
 
