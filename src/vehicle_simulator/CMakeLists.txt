@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   pcl_ros
 )
 
+find_package(OpenCV REQUIRED)
 find_package(PCL REQUIRED)
 
 ###################################
@@ -36,6 +37,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
   "${PROJECT_SOURCE_DIR}/include"
   /usr/local/include # Location when using 'make system_install'
@@ -52,7 +54,7 @@ link_directories(
 add_executable(vehicleSimulator src/vehicleSimulator.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(vehicleSimulator ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(vehicleSimulator ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
 install(TARGETS vehicleSimulator
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

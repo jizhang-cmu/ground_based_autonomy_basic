@@ -71,7 +71,7 @@ float vehicleYaw = 0;
 
 float vehicleXRec = 0;
 float vehicleYRec = 0;
-float vehicleZRec = 0.5;
+float vehicleZRec = 0;
 float vehicleRollRec = 0;
 float vehiclePitchRec = 0;
 float vehicleYawRec = 0;

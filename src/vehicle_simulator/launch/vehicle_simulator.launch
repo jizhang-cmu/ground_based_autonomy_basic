@@ -2,7 +2,20 @@
 
   <arg name="sensorOffsetX" default="0"/>
   <arg name="sensorOffsetY" default="0"/>
-  <arg name="vehicleZ" default="0.75"/>
+  <arg name="vehicleHeight" default="0.75"/>
+  <arg name="terrainZ" default="0"/>
+  <arg name="terrainVoxelSize" default="0.05"/>
+  <arg name="groundHeightThre" default="0.1"/>
+  <arg name="adjustZ" default="false"/>
+  <arg name="terrainRadiusZ" default="0.5"/>
+  <arg name="minTerrainPointNumZ" default="10"/>
+  <arg name="smoothRateZ" default="0.2"/>
+  <arg name="adjustIncl" default="false"/>
+  <arg name="terrainRadiusIncl" default="1.5"/>
+  <arg name="minTerrainPointNumIncl" default="500"/>
+  <arg name="smoothRateIncl" default="0.2"/>
+  <arg name="InclFittingThre" default="0.2"/>
+  <arg name="maxIncl" default="30.0"/>
 
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
@@ -29,7 +42,20 @@
     <param name="use_gazebo_time" type="bool" value="false" />
     <param name="sensorOffsetX" value="$(arg sensorOffsetX)" />
     <param name="sensorOffsetY" value="$(arg sensorOffsetY)" />
-    <param name="vehicleZ" value="$(arg vehicleZ)" />
+    <param name="vehicleHeight" value="$(arg vehicleHeight)" />
+    <param name="terrainZ" value="$(arg terrainZ)" />
+    <param name="terrainVoxelSize" value="$(arg terrainVoxelSize)" />
+    <param name="groundHeightThre" value="$(arg groundHeightThre)" />
+    <param name="adjustZ" value="$(arg adjustZ)" />
+    <param name="terrainRadiusZ" value="$(arg terrainRadiusZ)" />
+    <param name="minTerrainPointNumZ" value="$(arg minTerrainPointNumZ)" />
+    <param name="smoothRateZ" value="$(arg smoothRateZ)" />
+    <param name="adjustIncl" value="$(arg adjustIncl)" />
+    <param name="terrainRadiusIncl" value="$(arg terrainRadiusIncl)" />
+    <param name="minTerrainPointNumIncl" value="$(arg minTerrainPointNumIncl)" />
+    <param name="smoothRateIncl" value="$(arg smoothRateIncl)" />
+    <param name="InclFittingThre" value="$(arg InclFittingThre)" />
+    <param name="maxIncl" value="$(arg maxIncl)" />
   </node>
 
 </launch>
