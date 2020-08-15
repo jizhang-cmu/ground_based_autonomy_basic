@@ -65,7 +65,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>/path_to_folder/mesh.dae</uri>
+              <uri>/path_to_folder/meshfile.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -85,7 +85,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/path_to_folder/mesh.dae</uri>
+              <uri>/path_to_folder/meshfile.dae</uri>
             </mesh>
           </geometry>
         </visual>
