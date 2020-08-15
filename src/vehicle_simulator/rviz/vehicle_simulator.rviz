@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
       Splitter Ratio: 0.5769979953765869
-    Tree Height: 704
+    Tree Height: 441
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -33,8 +33,7 @@ Toolbars:
 Visualization Manager:
   Class: ""
   Displays:
-    - Alpha: 1
-      Class: rviz/Axes
+    - Class: rviz/Axes
       Enabled: true
       Length: 1
       Name: Vehicle
@@ -118,7 +117,6 @@ Visualization Manager:
         Z: 0
       Pose Color: 255; 85; 255
       Pose Style: None
-      Queue Size: 10
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
@@ -161,7 +159,6 @@ Visualization Manager:
       Enabled: true
       History Length: 1
       Name: Waypoint
-      Queue Size: 10
       Radius: 0.20000000298023224
       Topic: /way_point
       Unreliable: false
@@ -171,7 +168,6 @@ Visualization Manager:
       Color: 0; 255; 0
       Enabled: true
       Name: Boundary
-      Queue Size: 10
       Topic: /navigation_boundary
       Unreliable: false
       Value: true
@@ -239,7 +235,6 @@ Visualization Manager:
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Field of View: 0.7853981852531433
       Focal Point:
         X: 0
         Y: 0
@@ -251,6 +246,7 @@ Visualization Manager:
       Near Clip Distance: 0.009999999776482582
       Pitch: 1.5697963237762451
       Target Frame: vehicle
+      Value: Orbit (rviz)
       Yaw: 3.14040470123291
     Saved: ~
 Window Geometry:
@@ -269,5 +265,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1447
-  X: 56
+  X: 51
   Y: 27
