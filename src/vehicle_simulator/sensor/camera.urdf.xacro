@@ -33,17 +33,17 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.5</near>
+          <near>0.1</near>
           <far>200.0</far>
         </clip>
       </camera>
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>monocular_camera</cameraName>
+        <cameraName>camera</cameraName>
         <imageTopicName>image</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>monocular_camera</frameName>
+        <frameName>camera</frameName>
         <hackBaseline>0.0</hackBaseline>
         <distortionK1>0.0</distortionK1>
         <distortionK2>0.0</distortionK2>

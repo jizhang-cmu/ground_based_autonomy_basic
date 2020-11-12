@@ -3,10 +3,9 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /Global Options1
+      Expanded: ~
       Splitter Ratio: 0.5769979953765869
-    Tree Height: 441
+    Tree Height: 706
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -42,7 +41,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /monocular_camera/image
+      Image Topic: /camera/image
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -218,7 +217,7 @@ Visualization Manager:
     Background Color: 0; 0; 0
     Default Light: true
     Fixed Frame: map
-    Frame Rate: 10
+    Frame Rate: 15
   Name: root
   Tools:
     - Class: rviz/Interact
