@@ -3,10 +3,10 @@
   <xacro:arg name="gpu" default="false"/>
   <xacro:property name="gpu" value="$(arg gpu)" />
 
-  <link name="sensor" />
+  <link name="lidar" />
 
   <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
-  <xacro:VLP-16 parent="sensor" name="velodyne" topic="/velodyne_points" hz="5" samples="350" gpu="${gpu}">
+  <xacro:VLP-16 parent="lidar" name="velodyne" topic="/velodyne_points" hz="5" samples="350" gpu="${gpu}">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:VLP-16>
 
