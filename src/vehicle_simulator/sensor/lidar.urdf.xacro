@@ -1,4 +1,5 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="example">
+
   <xacro:arg name="gpu" default="false"/>
   <xacro:property name="gpu" value="$(arg gpu)" />
 
