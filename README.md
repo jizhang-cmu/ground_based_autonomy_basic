@@ -1,6 +1,6 @@
 The repository contains code for autonomous navigation and collision avoidance to use with ground robots. In an autonomous navigation system, this repository is often at the mid-level, above the state estimation module and below the high-level planning module, connecting different modules in the navigation system. To help users start easily, the repository includes a vehicle simulator and does not need to run onboard a real robot. The code implementation is targeted at executing on a robot computer with limited processing power. Except for the vehicle simulator, all code in the repository is optimized and lightweight. The code operates in two modes: *autonomy mode* takes waypoints as the input and navigates towards the waypoints while avoiding obstacles along the way, *smart joystick mode* takes commands from an operator through a joystick controller and avoids obstacles that the robot encounters. The *smart joystick mode* is often useful in debugging the navigation system and is highly recommended.
 
-A video showing functionalities of the code is available at https://youtu.be/JgJG3Y8JCt0
+[A video showing functionalities of the code is available.](https://youtu.be/JgJG3Y8JCt0)
 
 <img src="img/system_diagram.jpg" alt="System Diagram" width="55%"/>
 
@@ -64,11 +64,7 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 # Advanced
 
-**Changing simulation environment**: The vehicle simulator supports custom environments. To change the environment, replace 'example.world' by 'mesh.world' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Then, modify 'src/vehicle_simulator/world/mesh.world' to update the directory to the mesh file ('/path_to_folder/meshfile.dae' at two places) and offset ('pose frame = [0 0 0 0 0 0]' at the bottom). An example mesh file can be downloaded at
-
-https://github.com/osrf/gazebo_models/blob/master/willowgarage/meshes/willowgarage_collision.dae
-
-To check the mesh file is loaded correctly, set 'gui = true' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Additionally, if the environment contains 3D terrain, set 'adjustZ = true' and 'adjustIncl = true' to adjust robot elevation and inclination according to the terrain. Set 'terrainZ' to the terrain elevation at the start position. Note that terrain analysis needs to run for the feature to be functional. See instruction below to turn on terrain analysis.
+**Changing simulation environment**: The vehicle simulator supports custom environments. To change the environment, replace 'example.world' by 'mesh.world' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Then, modify 'src/vehicle_simulator/world/mesh.world' to update the directory to the mesh file ('/path_to_folder/meshfile.dae' at two places) and offset ('pose frame = [0 0 0 0 0 0]' at the bottom). An example mesh file can be downloaded from [here](https://github.com/osrf/gazebo_models/blob/master/willowgarage/meshes/willowgarage_collision.dae). To check the mesh file is loaded correctly, set 'gui = true' in 'src/vehicle_simulator/launch/vehicle_simulator.launch'. Additionally, if the environment contains 3D terrain, set 'adjustZ = true' and 'adjustIncl = true' to adjust robot elevation and inclination according to the terrain. Set 'terrainZ' to the terrain elevation at the start position. Note that terrain analysis needs to run for the feature to be functional. See instruction below to turn on terrain analysis.
 
 **Running on real robot**: The system is setup to use a vehicle simulator for a quick start. The vehicle simulator publishes 'nav_msgs::Odometry' typed state estimation messages on ROS topic '/state_estimation', '/tf' messages, and 'sensor_msgs::PointCloud2' typed registered scan messages on ROS topic '/registered_scan'. The scans are simulated based on a Velodyne VLP-16 Lidar and are registered in the '/map' frame. To use the code with a real robot, replace the vehicle simulator by the state estimation module on the robot and forward the 'geometry_msgs::TwistStamped' typed command velocity messages on ROS topic '/cmd_vel' to the motion controller. Adjust 'minRelZ' and 'maxRelZ' in 'src/local_planner/launch/local_planner.launch' to crop off the ground and ceiling in the registered scans. The default sensor height is set at 0.75m above the ground in the vehicle simulator and the registered scans are cropped at the height of -0.5m and 0.25m w.r.t. the sensor.
 
@@ -116,6 +112,10 @@ set 'useTerrainAnalysis = true' and adjust 'obstacleHeightThre' in 'src/local_p
 
 J. Zhang, C. Hu, R. Gupta Chadha, and S. Singh. Falco: Fast Likelihood-based Collision Avoidance with Extension to Human-guided Navigation. Journal of Field Robotics. 2020.
 
-# Author Website
+# Author
 
-https://frc.ri.cmu.edu/~zhangji
+[Ji Zhang](https://frc.ri.cmu.edu/~zhangji)
+
+# Credit
+
+[velodyne_simulator](http://wiki.ros.org/velodyne_simulator) is from open-source release.
