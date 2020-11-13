@@ -1,6 +1,6 @@
 The repository contains code for autonomous navigation and collision avoidance to use with ground robots. In an autonomous navigation system, this repository is often at the mid-level, above the state estimation module and below the high-level planning module, connecting different modules in the navigation system. To help users start easily, the repository includes a vehicle simulator and does not need to run onboard a real robot. The code implementation is targeted at executing on a robot computer with limited processing power. Except for the vehicle simulator, all code in the repository is optimized and lightweight. The code operates in two modes: *autonomy mode* takes waypoints as the input and navigates towards the waypoints while avoiding obstacles along the way, *smart joystick mode* takes commands from an operator through a joystick controller and avoids obstacles that the robot encounters. The *smart joystick mode* is often useful in debugging the navigation system and is highly recommended.
 
-[A video showing functionalities of the code is available here.](https://youtu.be/JgJG3Y8JCt0)
+[A video showing functionalities of the code is available.](https://youtu.be/JgJG3Y8JCt0)
 
 <img src="img/system_diagram.jpg" alt="System Diagram" width="55%"/>
 
@@ -68,7 +68,7 @@ If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/
 
 **Running on real robot**: The system is setup to use a vehicle simulator for a quick start. The vehicle simulator publishes 'nav_msgs::Odometry' typed state estimation messages on ROS topic '/state_estimation', '/tf' messages, and 'sensor_msgs::PointCloud2' typed registered scan messages on ROS topic '/registered_scan'. The scans are simulated based on a Velodyne VLP-16 Lidar and are registered in the '/map' frame. To use the code with a real robot, replace the vehicle simulator by the state estimation module on the robot and forward the 'geometry_msgs::TwistStamped' typed command velocity messages on ROS topic '/cmd_vel' to the motion controller. Adjust 'minRelZ' and 'maxRelZ' in 'src/local_planner/launch/local_planner.launch' to crop off the ground and ceiling in the registered scans. The default sensor height is set at 0.75m above the ground in the vehicle simulator and the registered scans are cropped at the height of -0.5m and 0.25m w.r.t. the sensor.
 
-**Integrating with LOAM**: The original implementation of Lidar Odometry and Mapping (LOAM) uses the camera coordinate convention (x-left, y-up, z-front). This repository uses the standard ground robot convention (x-front, y-left, z-up). If using the original version of LOAM for state estimation, comment out
+**Integrating with LOAM**: The original implementation of [Lidar Odometry and Mapping](http://wiki.ros.org/loam_velodyne) (LOAM) algorithm uses the camera coordinate convention (x-left, y-up, z-front). This repository uses the standard ground robot convention (x-front, y-left, z-up). If using the original version of LOAM for state estimation, comment out
 
 ```<!--include file="$(find vehicle_simulator)/launch/vehicle_simulator.launch" /-->```
 
