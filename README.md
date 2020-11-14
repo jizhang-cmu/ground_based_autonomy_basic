@@ -32,7 +32,7 @@ Press any button on the controller and joystick messages should display in the t
 
 # Quick Start
 
-Clone the repository and checkout the 'melodic' branch. In a terminal, go to the folder and compile,
+Clone the repository and checkout the 'noetic' branch. In a terminal, go to the folder and compile,
 
 ```catkin_make```
 
