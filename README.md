@@ -44,7 +44,7 @@ To launch the code in *smart joystick mode*, plugin the controller to the comput
 
 ```roslaunch vehicle_simulator system.launch```
 
-Wait for Gazebo to initialize in a few seconds, the following scene will show up in RVIZ with scans in the main window and images on the side. Now, use the right joystick on the controller to navigate the robot. Pushing the right joystick to the front and back drives the robot around and pushing the right joystick to the left and right makes rotations. Holding the obstacle-check button cancels obstacles checking.
+Wait for Gazebo to initialize in a few seconds, the following scene will show up in RVIZ with scans in the main window and images on the side. Now, use the right joystick on the controller to navigate the robot. Pushing the right joystick to the front and back drives the robot around and pushing the right joystick to the left and right makes rotations. Holding the obstacle-check button cancels obstacle checking.
 
 <img src="img/smart_joystick.jpg" alt="Smart Joystick" width="75%"/>
 
