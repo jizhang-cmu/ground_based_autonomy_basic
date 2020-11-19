@@ -44,7 +44,7 @@ To launch the code in *smart joystick mode*, plugin the controller to the comput
 
 ```roslaunch vehicle_simulator system.launch```
 
-Wait for Gazebo to initialize in a few seconds, the following scene will show up in RVIZ with scans in the main window and images on the side. Now, use the right joystick on the controller to navigate the robot. Pushing the right joystick to the front and back drives the robot around and pushing the right joystick to the left and right makes rotations. Holding the obstacle-check button cancels obstacle checking.
+Wait for Gazebo to initialize in a few seconds, the following scene will show up in RVIZ with scans in the main window and images on the side. The coordinate frame indicates the robot and the yellow dots are collision-free paths. Now, use the right joystick on the controller to navigate the robot. Pushing the right joystick to the front and back drives the robot around and pushing the right joystick to the left and right makes rotations. Holding the obstacle-check button cancels obstacle checking.
 
 <img src="img/smart_joystick.jpg" alt="Smart Joystick" width="75%"/>
 
@@ -94,11 +94,11 @@ Launch LOAM and the system side by side. Then, play bagfiles with '--clock' flag
 
 **Obstacle checking on/off**: Obstacle checking can be turned on and off with a 'std_msgs::Bool' typed message on ROS topic '/check_obstacle'. The number in the message indicates obstacle checking is on or off. Alternatively, one can hold the obstacle-check button on the controller to turn off obstacle checking.
 
-**Turning on terrain analysis**: The system uses registered scans for collision avoidance by default. If driving over 3D terrains, terrain analysis is necessary. To launch terrain analysis, uncomment
+**Turning on terrain analysis**: The system uses registered scans for collision avoidance by default. If driving over 3D terrains, terrain analysis becomes necessary. To launch terrain analysis, uncomment
 
 ```<include file='$(find terrain_analysis)/launch/terrain_analysis.launch' />```
 
-set 'useTerrainAnalysis = true' and adjust 'obstacleHeightThre' in 'src/local_planner/launch/local_planner.launch'. To check the terrain map in RVIZ while terrain analysis is running, click 'Panels->Displays', uncheck 'RegScan', and check 'terrainMap'. Clicking the clear-terrain-map button on the controller reinitializes the terrain map. Alternatively, one can send a 'std_msgs::Float32' typed message on ROS topic '/map_clearing'. The number in the message indicates the radius of the area to be cleared. Note that terrain analysis does require scans to be well registered. If the state estimation on the robot is imprecise and scans are misregistered, terrain analysis will likely sacrifice.
+set 'useTerrainAnalysis = true' and adjust 'obstacleHeightThre' in 'src/local_planner/launch/local_planner.launch'. The terrain analysis publishes 'sensor_msgs::PointCloud2' typed terrain map messages on ROS topic '/terrain_map', with 'pcl::PointXYZI' typed points in the messages. Here, the x, y, z fields of a point indicate the coordinates and the intensity field stores the traversal cost. To check the terrain map in RVIZ while terrain analysis is running, click 'Panels->Displays', uncheck 'RegScan', and check 'terrainMap'. Clicking the clear-terrain-map button on the controller reinitializes the terrain map. Alternatively, one can send a 'std_msgs::Float32' typed message on ROS topic '/map_clearing'. The number in the message indicates the radius of the area to be cleared. Note that terrain analysis does require scans to be well registered. If the state estimation on the robot is imprecise and scans are misregistered, terrain analysis will likely sacrifice.
 
 **Handling negative obstacles**: While the best way to handle negative obstacles is mounting a sensor high up on the robot looking downward into the negative obstacles, a quick solution is turning on terrain analysis and setting 'noDataObstacle = true' in 'src/terrain_analysis/launch/terrain_analysis.launch'. Negative obstacles usually cause some areas to have no data. The system will consider these areas to be non-traversable.
 
