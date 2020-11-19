@@ -51,6 +51,10 @@ double smoothRateIncl = 0.2;
 double InclFittingThre = 0.2;
 double maxIncl = 30.0;
 
+const int systemDelay = 5;
+int systemInitCount = 0;
+bool systemInited = false;
+
 pcl::PointCloud<pcl::PointXYZI>::Ptr scanData(new pcl::PointCloud<pcl::PointXYZI>());
 pcl::PointCloud<pcl::PointXYZI>::Ptr terrainCloud(new pcl::PointCloud<pcl::PointXYZI>());
 pcl::PointCloud<pcl::PointXYZI>::Ptr terrainCloudIncl(new pcl::PointCloud<pcl::PointXYZI>());
@@ -91,6 +95,14 @@ ros::Publisher *pubScanPointer = NULL;
 
 void scanHandler(const sensor_msgs::PointCloud2::ConstPtr& scanIn)
 {
+  if (!systemInited) {
+    systemInitCount++;
+    if (systemInitCount > systemDelay) {
+      systemInited = true;
+    }
+    return;
+  }
+
   double scanTime = scanIn->header.stamp.toSec();
 
   if (odomSendIDPointer < 0) {
