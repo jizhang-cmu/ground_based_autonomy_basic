@@ -76,7 +76,7 @@ void odometryHandler(const nav_msgs::Odometry::ConstPtr& odom)
   if (!reverseTF) {
     tfBroadcasterPointer->sendTransform(odomTrans);
   } else {
-    tfBroadcasterPointer->sendTransform(tf::StampedTransform(odomTrans.inverse(), odom->header.stamp, "/sensor", "/map"));
+    tfBroadcasterPointer->sendTransform(tf::StampedTransform(odomTrans.inverse(), odom->header.stamp, "sensor", "map"));
   }
 }
 
