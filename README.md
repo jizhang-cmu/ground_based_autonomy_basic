@@ -115,7 +115,7 @@ J. Zhang, C. Hu, R. Gupta Chadha, and S. Singh. Falco: Fast Likelihood-based Col
 # Author
 
 [Ji Zhang](https://frc.ri.cmu.edu/~zhangji)<br/>
-Robotics Institute, Carnegie Mellon University
+The Robotics Institute, Carnegie Mellon University
 
 # Credit
 
