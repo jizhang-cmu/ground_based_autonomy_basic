@@ -47,8 +47,10 @@ double stopDisThre = 0.2;
 double slowDwnDisThre = 1.0;
 bool useInclRateToSlow = false;
 double inclRateThre = 120.0;
-double slowRate = 0.25;
-double slowTime = 2.0;
+double slowRate1 = 0.25;
+double slowRate2 = 0.5;
+double slowTime1 = 2.0;
+double slowTime2 = 2.0;
 bool useInclToStop = false;
 double inclThre = 45.0;
 double stopTime = 5.0;
@@ -196,8 +198,10 @@ int main(int argc, char** argv)
   nhPrivate.getParam("slowDwnDisThre", slowDwnDisThre);
   nhPrivate.getParam("useInclRateToSlow", useInclRateToSlow);
   nhPrivate.getParam("inclRateThre", inclRateThre);
-  nhPrivate.getParam("slowRate", slowRate);
-  nhPrivate.getParam("slowTime", slowTime);
+  nhPrivate.getParam("slowRate1", slowRate1);
+  nhPrivate.getParam("slowRate2", slowRate2);
+  nhPrivate.getParam("slowTime1", slowTime1);
+  nhPrivate.getParam("slowTime2", slowTime2);
   nhPrivate.getParam("useInclToStop", useInclToStop);
   nhPrivate.getParam("inclThre", inclThre);
   nhPrivate.getParam("stopTime", stopTime);
@@ -304,7 +308,8 @@ int main(int argc, char** argv)
       }
 
       float joySpeed3 = joySpeed2;
-      if (odomTime < slowInitTime + slowTime && slowInitTime > 0) joySpeed3 *= slowRate;
+      if (odomTime < slowInitTime + slowTime1 && slowInitTime > 0) joySpeed3 *= slowRate1;
+      else if (odomTime < slowInitTime + slowTime1 + slowTime2 && slowInitTime > 0) joySpeed3 *= slowRate2;
 
       if (fabs(dirDiff) < dirDiffThre && dis > stopDisThre) {
         if (vehicleSpeed < joySpeed3) vehicleSpeed += maxAccel / 100.0;
