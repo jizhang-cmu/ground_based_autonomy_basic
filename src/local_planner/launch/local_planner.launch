@@ -71,8 +71,10 @@
     <param name="slowDwnDisThre" type="double" value="1.0" />
     <param name="useInclRateToSlow" type="bool" value="false" />
     <param name="inclRateThre" type="double" value="120.0" />
-    <param name="slowRate" type="double" value="0.25" />
-    <param name="slowTime" type="double" value="2.0" />
+    <param name="slowRate1" type="double" value="0.25" />
+    <param name="slowRate2" type="double" value="0.5" />
+    <param name="slowTime1" type="double" value="2.0" />
+    <param name="slowTime2" type="double" value="2.0" />
     <param name="useInclToStop" type="bool" value="false" />
     <param name="inclThre" type="double" value="45.0" />
     <param name="stopTime" type="double" value="5.0" />
