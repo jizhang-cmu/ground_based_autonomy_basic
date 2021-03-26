@@ -150,7 +150,7 @@ Visualization Manager:
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.00999999978
-      Style: Flat Squares
+      Style: Points
       Topic: /velodyne_points
       Unreliable: false
       Use Fixed Frame: true
@@ -180,7 +180,7 @@ Visualization Manager:
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.00999999978
-      Style: Flat Squares
+      Style: Points
       Topic: /velodyne_points2
       Unreliable: false
       Use Fixed Frame: true
