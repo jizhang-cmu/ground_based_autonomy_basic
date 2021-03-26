@@ -2,6 +2,12 @@
 Changelog for package velodyne_gazebo_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.11 (2021-02-23)
+-------------------
+* Remove support for end-of-life ROS distributions
+* Add organize_cloud parameter to match velodyne_pointcloud
+* Contributors: Kevin Hallenbeck
+
 1.0.10 (2020-08-03)
 -------------------
 * Change PointCloud2 structure to match updated velodyne_pointcloud package

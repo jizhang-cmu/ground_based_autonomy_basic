@@ -2,6 +2,9 @@
 Changelog for package velodyne_simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.11 (2021-02-23)
+-------------------
+
 1.0.10 (2020-08-03)
 -------------------
 * Bump minimum CMake version to 3.0.2 in all CMakeLists.txt

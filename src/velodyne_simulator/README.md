@@ -6,7 +6,7 @@ URDF description and Gazebo plugins to simulate Velodyne laser scanners
 # Features
 * URDF with colored meshes
 * Gazebo plugin based on [gazebo_plugins/gazebo_ros_block_laser](https://github.com/ros-simulation/gazebo_ros_pkgs/blob/kinetic-devel/gazebo_plugins/src/gazebo_ros_block_laser.cpp)
-* Publishes PointCloud2 with same structure (x, y, z, intensity, ring)
+* Publishes PointCloud2 with same structure (x, y, z, intensity, ring, time)
 * Simulated Gaussian noise
 * GPU acceleration ([with a modern Gazebo build](gazebo_upgrade.md))
 * Supported models:
@@ -23,6 +23,7 @@ URDF description and Gazebo plugins to simulate Velodyne laser scanners
 * ```hz``` Update rate in hz. Default ```10```
 * ```lasers``` Number of vertical spinning lasers. Default ```VLP-16: 16, HDL-32E: 32```
 * ```samples``` Nuber of horizontal rotating samples. Default ```VLP-16: 1875, HDL-32E: 2187```
+* ```organize_cloud``` Organize PointCloud2 into 2D array with NaN placeholders, otherwise 1D array and leave out invlaid points. Default ```false```
 * ```min_range``` Minimum range value in meters. Default ```0.9```
 * ```max_range``` Maximum range value in meters. Default ```130.0```
 * ```noise``` Gausian noise value in meters. Default ```0.008```
@@ -39,8 +40,6 @@ URDF description and Gazebo plugins to simulate Velodyne laser scanners
     * Solution: User can reduce number of points (samples) or frequency (hz) in the urdf parameters, see [example.urdf.xacro](velodyne_description/urdf/example.urdf.xacro)
 * Gazebo crashes when updating HDL-32E sensors with default number of points. "Took over 1.0 seconds to update a sensor."
     * Solution: User can reduce number of points in urdf (same as above)
-* Gazebo versions in indigo and jade have different z orientations
-    * Solution: Maintain separate branches for urdf changes (gazebo2 and master)
 
 # Example Gazebo Robot
 ```roslaunch velodyne_description example.launch```

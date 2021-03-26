@@ -1,7 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2015-2018, Dataspeed Inc.
+ *  Copyright (c) 2015-2021, Dataspeed Inc.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -104,6 +104,9 @@ namespace gazebo
 
     /// \brief frame transform name, should match link name
     private: std::string frame_name_;
+
+    /// \brief organize cloud
+    private: bool organize_cloud_;
 
     /// \brief the intensity beneath which points will be filtered
     private: double min_intensity_;
