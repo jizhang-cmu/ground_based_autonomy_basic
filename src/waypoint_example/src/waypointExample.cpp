@@ -218,24 +218,26 @@ int main(int argc, char** argv)
     float disZ = vehicleZ - waypoints->points[wayPointID].z;
 
     // start waiting if the current waypoint is reached
-    if (sqrt(disX * disX + disY * disY) < waypointXYRadius && fabs(disZ) < waypointZBound && wayPointID < waypointSize - 1 && !isWaiting) {
+    if (sqrt(disX * disX + disY * disY) < waypointXYRadius && fabs(disZ) < waypointZBound && !isWaiting) {
       waitTimeStart = curTime;
       isWaiting = true;
     }
 
     // move to the next waypoint after waiting is over
-    if (isWaiting && waitTimeStart + waitTime < curTime) {
+    if (isWaiting && waitTimeStart + waitTime < curTime && wayPointID < waypointSize - 1) {
       wayPointID++;
       isWaiting = false;
     }
 
     // publish waypoint, speed, and boundary messages at certain frame rate
     if (curTime - waypointTime > 1.0 / frameRate) {
-      waypointMsgs.header.stamp = ros::Time().fromSec(curTime);
-      waypointMsgs.point.x = waypoints->points[wayPointID].x;
-      waypointMsgs.point.y = waypoints->points[wayPointID].y;
-      waypointMsgs.point.z = waypoints->points[wayPointID].z;
-      pubWaypoint.publish(waypointMsgs);
+      if (!isWaiting) {
+        waypointMsgs.header.stamp = ros::Time().fromSec(curTime);
+        waypointMsgs.point.x = waypoints->points[wayPointID].x;
+        waypointMsgs.point.y = waypoints->points[wayPointID].y;
+        waypointMsgs.point.z = waypoints->points[wayPointID].z;
+        pubWaypoint.publish(waypointMsgs);
+      }
 
       if (sendSpeed) {
         speedMsgs.data = speed;
