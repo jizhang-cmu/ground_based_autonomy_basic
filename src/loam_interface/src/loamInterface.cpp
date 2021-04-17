@@ -31,6 +31,7 @@ string stateEstimationTopic = "/integrated_to_init";
 string registeredScanTopic = "/velodyne_cloud_registered";
 bool flipStateEstimation = true;
 bool flipRegisteredScan = true;
+bool sendTF = true;
 bool reverseTF = false;
 
 pcl::PointCloud<pcl::PointXYZI>::Ptr laserCloud(new pcl::PointCloud<pcl::PointXYZI>());
@@ -73,10 +74,12 @@ void odometryHandler(const nav_msgs::Odometry::ConstPtr& odom)
   odomTrans.setRotation(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w));
   odomTrans.setOrigin(tf::Vector3(odomData.pose.pose.position.x, odomData.pose.pose.position.y, odomData.pose.pose.position.z));
 
-  if (!reverseTF) {
-    tfBroadcasterPointer->sendTransform(odomTrans);
-  } else {
-    tfBroadcasterPointer->sendTransform(tf::StampedTransform(odomTrans.inverse(), odom->header.stamp, "sensor", "map"));
+  if (sendTF) {
+    if (!reverseTF) {
+      tfBroadcasterPointer->sendTransform(odomTrans);
+    } else {
+      tfBroadcasterPointer->sendTransform(tf::StampedTransform(odomTrans.inverse(), odom->header.stamp, "sensor", "map"));
+    }
   }
 }
 
@@ -113,6 +116,7 @@ int main(int argc, char** argv)
   nhPrivate.getParam("registeredScanTopic", registeredScanTopic);
   nhPrivate.getParam("flipStateEstimation", flipStateEstimation);
   nhPrivate.getParam("flipRegisteredScan", flipRegisteredScan);
+  nhPrivate.getParam("sendTF", sendTF);
   nhPrivate.getParam("reverseTF", reverseTF);
 
   ros::Subscriber subOdometry = nh.subscribe<nav_msgs::Odometry> (stateEstimationTopic, 5, odometryHandler);
