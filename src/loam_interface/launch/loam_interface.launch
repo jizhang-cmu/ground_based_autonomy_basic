@@ -5,6 +5,7 @@
     <param name="registeredScanTopic" type="string" value="/velodyne_cloud_registered" />
     <param name="flipStateEstimation" type="bool" value="true" />
     <param name="flipRegisteredScan" type="bool" value="true" />
+    <param name="sendTF" type="bool" value="true" />
     <param name="reverseTF" type="bool" value="false" />
   </node>
 
