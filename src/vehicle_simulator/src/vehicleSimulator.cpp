@@ -60,6 +60,8 @@ pcl::PointCloud<pcl::PointXYZI>::Ptr terrainCloud(new pcl::PointCloud<pcl::Point
 pcl::PointCloud<pcl::PointXYZI>::Ptr terrainCloudIncl(new pcl::PointCloud<pcl::PointXYZI>());
 pcl::PointCloud<pcl::PointXYZI>::Ptr terrainCloudDwz(new pcl::PointCloud<pcl::PointXYZI>());
 
+std::vector<int> scanInd;
+
 ros::Time odomTime;
 
 float vehicleX = 0;
@@ -142,6 +144,7 @@ void scanHandler(const sensor_msgs::PointCloud2::ConstPtr& scanIn)
 
   scanData->clear();
   pcl::fromROSMsg(*scanIn, *scanData);
+  pcl::removeNaNFromPointCloud(*scanData, *scanData, scanInd);
 
   int scanDataSize = scanData->points.size();
   for (int i = 0; i < scanDataSize; i++) {
