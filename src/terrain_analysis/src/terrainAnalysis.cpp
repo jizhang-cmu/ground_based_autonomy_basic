@@ -295,7 +295,7 @@ int main(int argc, char** argv)
       while (vehicleY - terrainVoxelCenY > terrainVoxelSize) {
         for (int indX = 0; indX < terrainVoxelWidth; indX++) {
           pcl::PointCloud<pcl::PointXYZI>::Ptr terrainVoxelCloudPtr = terrainVoxelCloud[terrainVoxelWidth * indX];
-          for (int indY = 0; indY <= terrainVoxelWidth - 1; indY++) {
+          for (int indY = 0; indY < terrainVoxelWidth - 1; indY++) {
             terrainVoxelCloud[terrainVoxelWidth * indX + indY] = 
             terrainVoxelCloud[terrainVoxelWidth * indX + (indY + 1)];
           }
