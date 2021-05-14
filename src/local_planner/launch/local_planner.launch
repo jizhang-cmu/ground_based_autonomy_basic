@@ -10,7 +10,7 @@
   <arg name="maxSpeed" default="1.0"/>
   <arg name="autonomyMode" default="false"/>
   <arg name="autonomySpeed" default="1.0"/>
-  <arg name="joyToSpeedDelay" default="5.0"/>
+  <arg name="joyToSpeedDelay" default="2.0"/>
 
   <node pkg="local_planner" type="localPlanner" name="localPlanner" output="screen" required="true">
     <param name="pathFolder" type="string" value="$(find local_planner)/paths" />
