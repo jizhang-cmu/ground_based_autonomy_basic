@@ -58,7 +58,7 @@ bool noRotAtStop = false;
 bool noRotAtGoal = true;
 bool autonomyMode = false;
 double autonomySpeed = 1.0;
-double joyToSpeedDelay = 5.0;
+double joyToSpeedDelay = 2.0;
 
 float joySpeed = 0;
 float joySpeedRaw = 0;
