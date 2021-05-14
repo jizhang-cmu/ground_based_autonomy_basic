@@ -61,6 +61,7 @@ double autonomySpeed = 1.0;
 double joyToSpeedDelay = 5.0;
 
 float joySpeed = 0;
+float joySpeedRaw = 0;
 float joyYaw = 0;
 int safetyStop = 0;
 
@@ -141,7 +142,8 @@ void joystickHandler(const sensor_msgs::Joy::ConstPtr& joy)
 {
   joyTime = ros::Time::now().toSec();
 
-  joySpeed = sqrt(joy->axes[3] * joy->axes[3] + joy->axes[4] * joy->axes[4]);
+  joySpeedRaw = sqrt(joy->axes[3] * joy->axes[3] + joy->axes[4] * joy->axes[4]);
+  joySpeed = joySpeedRaw;
   if (joySpeed > 1.0) joySpeed = 1.0;
   if (joy->axes[4] == 0) joySpeed = 0;
   joyYaw = joy->axes[3];
@@ -163,7 +165,7 @@ void speedHandler(const std_msgs::Float32::ConstPtr& speed)
 {
   double speedTime = ros::Time::now().toSec();
 
-  if (autonomyMode && speedTime - joyTime > joyToSpeedDelay) {
+  if (autonomyMode && speedTime - joyTime > joyToSpeedDelay && joySpeedRaw == 0) {
     joySpeed = speed->data / maxSpeed;
 
     if (joySpeed < 0) joySpeed = 0;
