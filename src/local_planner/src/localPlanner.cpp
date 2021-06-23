@@ -657,9 +657,9 @@ int main(int argc, char** argv)
       int boundaryCloudSize = boundaryCloud->points.size();
       for (int i = 0; i < boundaryCloudSize; i++) {
         point.x = ((boundaryCloud->points[i].x - vehicleX) * cosVehicleYaw 
-                + (boundaryCloud->points[i].y - vehicleY) * sinVehicleYaw) / pathScale;
+                + (boundaryCloud->points[i].y - vehicleY) * sinVehicleYaw);
         point.y = (-(boundaryCloud->points[i].x - vehicleX) * sinVehicleYaw 
-                + (boundaryCloud->points[i].y - vehicleY) * cosVehicleYaw) / pathScale;
+                + (boundaryCloud->points[i].y - vehicleY) * cosVehicleYaw);
         point.z = boundaryCloud->points[i].z;
         point.intensity = boundaryCloud->points[i].intensity;
 
@@ -672,9 +672,9 @@ int main(int argc, char** argv)
       int addedObstaclesSize = addedObstacles->points.size();
       for (int i = 0; i < addedObstaclesSize; i++) {
         point.x = ((addedObstacles->points[i].x - vehicleX) * cosVehicleYaw 
-                + (addedObstacles->points[i].y - vehicleY) * sinVehicleYaw) / pathScale;
+                + (addedObstacles->points[i].y - vehicleY) * sinVehicleYaw);
         point.y = (-(addedObstacles->points[i].x - vehicleX) * sinVehicleYaw 
-                + (addedObstacles->points[i].y - vehicleY) * cosVehicleYaw) / pathScale;
+                + (addedObstacles->points[i].y - vehicleY) * cosVehicleYaw);
         point.z = addedObstacles->points[i].z;
         point.intensity = addedObstacles->points[i].intensity;
 
