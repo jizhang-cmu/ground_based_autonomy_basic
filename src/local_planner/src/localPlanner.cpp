@@ -695,6 +695,11 @@ int main(int argc, char** argv)
 
         relativeGoalDis = sqrt(relativeGoalX * relativeGoalX + relativeGoalY * relativeGoalY);
         joyDir = atan2(relativeGoalY, relativeGoalX) * 180 / PI;
+
+        if (!twoWayDrive) {
+          if (joyDir > 90.0) joyDir = 90.0;
+          else if (joyDir < -90.0) joyDir = -90.0;
+        }
       }
 
       bool pathFound = false;
