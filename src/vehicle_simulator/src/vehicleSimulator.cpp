@@ -353,7 +353,9 @@ int main(int argc, char** argv)
               + 0.005 * vehicleYawRate * (cos(vehicleYaw) * sensorOffsetX - sin(vehicleYaw) * sensorOffsetY);
     vehicleZ = terrainZ + vehicleHeight;
 
+    ros::Time odomTimeRec = odomTime;
     odomTime = ros::Time::now();
+    if (odomTime == odomTimeRec) odomTime += ros::Duration(0.005);
 
     odomSendIDPointer = (odomSendIDPointer + 1) % stackNum;
     odomTimeStack[odomSendIDPointer] = odomTime.toSec();
