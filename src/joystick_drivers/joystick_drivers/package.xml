@@ -1,0 +1,27 @@
+<package format="2">
+  <name>joystick_drivers</name>
+  <version>1.15.1</version>
+  <license>BSD</license>
+
+  <description>
+    This metapackage depends on packages for interfacing common
+    joysticks and human input devices with ROS.
+  </description>
+
+  <url type="website">http://www.ros.org/wiki/joystick_drivers</url>
+  <url type="development">https://github.com/ros-drivers/joystick_drivers</url>
+  <url type="bugtracker">https://github.com/ros-drivers/joystick_drivers/issues</url>
+
+  <maintainer email="jbo@jhu.edu">Jonathan Bohren</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>joy</exec_depend>
+  <exec_depend>ps3joy</exec_depend>  
+  <exec_depend>spacenav_node</exec_depend>  
+  <exec_depend>wiimote</exec_depend>  
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

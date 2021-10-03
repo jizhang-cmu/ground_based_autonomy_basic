@@ -1,0 +1,12 @@
+type: AnalyzerGroup
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+  PS3State:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: 'PS3 State'
+    timeout: 5.0
+    startswith: ['Battery', 'Charging State', 'Connection', 'ps3_joy']
+    remove_prefix: 'ps3_joy'
+
+
