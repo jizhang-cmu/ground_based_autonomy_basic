@@ -113,4 +113,4 @@ The Robotics Institute, Carnegie Mellon University
 
 ## Credit
 
-[velodyne_simulator](http://wiki.ros.org/velodyne_simulator) and [joystick_drivers](http://wiki.ros.org/joystick_drivers) packages are from open-source release.
+[velodyne_simulator](http://wiki.ros.org/velodyne_simulator) and [joystick_drivers](http://wiki.ros.org/joystick_drivers) packages are from open-source releases.
