@@ -6,7 +6,7 @@ The repository contains code for autonomous navigation and collision avoidance 
 
 ## Prerequisite
 
-To use *smart joystick mode*, the system requires a PS3/Xbox controller (*autonomy mode* can run without a controller). Most PS3/Xbox controllers with a USB or Bluetooth interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller. Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
+To use *smart joystick mode*, the system requires a PS3/4 or Xbox controller (*autonomy mode* can run without a controller). Most PS3/4 and Xbox controllers with a USB or Bluetooth interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller. Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
 
 <p align="center"><img src="img/ps3_controller.jpg" alt="PS3 Controller" width="50%"/></p>
 
