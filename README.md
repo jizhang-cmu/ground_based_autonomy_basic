@@ -6,19 +6,22 @@ The repository contains code for autonomous navigation and collision avoidance 
 
 ## Prerequisite
 
-To use *smart joystick mode*, the system requires a PS3 controller (*autonomy mode* can run without a controller). Most PS3 controllers with a USB or Bluetooth interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller. Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
+To use *smart joystick mode*, the system requires a PS3/Xbox controller (*autonomy mode* can run without a controller). Most PS3/Xbox controllers with a USB or Bluetooth interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller. Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
 
 <p align="center"><img src="img/ps3_controller.jpg" alt="PS3 Controller" width="50%"/></p>
 
-The code runs on a Ubuntu 20.04 computer installed with ROS Noetic. Install ROS joystick driver,
+<<<<<<< HEAD
+The code runs on a Ubuntu 20.04 computer installed with ROS Noetic. Install dependencies,
 
 ```sudo apt update```
 
-```sudo apt install ros-noetic-joystick-drivers```
+```sudo apt install libusb-dev```
 
-Make sure to add the username to dialout group (change 'username' in the command line) and reboot the computer,
+Clone the repository and checkout the 'noetic' branch. In a terminal, go to the folder, compile, and source the ROS workspace,
 
-```sudo adduser username dialout```
+```catkin_make```
+
+```source devel/setup.sh```
 
 To verify the controller is working, launch ROS joystick driver,
 
@@ -32,15 +35,7 @@ Press any button on the controller and joystick messages should display in the t
 
 ## Quick Start
 
-Clone the repository and checkout the 'noetic' branch. In a terminal, go to the folder and compile,
-
-```catkin_make```
-
-Source the ROS workspace,
-
-```source devel/setup.sh```
-
-To launch the code in *smart joystick mode*, plugin the controller to the computer,
+To launch the code in *smart joystick mode*, make sure the controller is plugged-in,
 
 ```roslaunch vehicle_simulator system.launch```
 
@@ -119,4 +114,4 @@ The Robotics Institute, Carnegie Mellon University
 
 ## Credit
 
-[velodyne_simulator](http://wiki.ros.org/velodyne_simulator) package is from open-source release.
+[velodyne_simulator](http://wiki.ros.org/velodyne_simulator) and [joystick_drivers](http://wiki.ros.org/joystick_drivers) packages are from open-source release.

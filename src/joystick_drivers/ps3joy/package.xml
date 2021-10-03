@@ -1,0 +1,37 @@
+<package format="2">
+  <name>ps3joy</name>
+  <version>1.15.0</version>
+  <license>BSD</license>
+
+  <description>
+    Playstation 3 SIXAXIS or DUAL SHOCK 3 joystick driver.
+    Driver for the Sony PlayStation 3 SIXAXIS or DUAL SHOCK 3
+    joysticks. In its current state, this driver is not compatible
+    with the use of other Bluetooth HID devices. The driver listens
+    for a connection on the HID ports, starts the joystick
+    streaming data, and passes the data to the Linux uinput device
+    so that it shows up as a normal joystick.
+  </description>
+
+  <maintainer email="jbo@jhu.edu">Jonathan Bohren</maintainer>
+  <author>Blaise Gassend</author>
+  <author>pascal@pabr.org</author>
+  <author>Melonee Wise</author>
+
+  <url type="website">http://www.ros.org/wiki/ps3joy</url>
+  <url type="development">https://github.com/ros-drivers/joystick_drivers</url>
+  <url type="bugtracker">https://github.com/ros-drivers/joystick_drivers/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslint</build_depend>
+  
+  <depend>bluez</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>joystick</depend>
+  <depend>libusb-dev</depend>
+  <depend>python3-bluez</depend>
+  <depend>rosgraph</depend>
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+</package>
