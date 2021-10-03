@@ -10,7 +10,6 @@ To use *smart joystick mode*, the system requires a PS3/Xbox controller (*auton
 
 <p align="center"><img src="img/ps3_controller.jpg" alt="PS3 Controller" width="50%"/></p>
 
-<<<<<<< HEAD
 The code runs on a Ubuntu 20.04 computer installed with ROS Noetic. Install dependencies,
 
 ```sudo apt update```
