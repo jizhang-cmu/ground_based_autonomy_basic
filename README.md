@@ -6,7 +6,7 @@ The repository contains code for autonomous navigation and collision avoidance 
 
 ## Prerequisite
 
-To use *smart joystick mode*, the system requires a PS3/4 or Xbox controller (*autonomy mode* can run without a controller). Most PS3/4 and Xbox controllers with a USB or Bluetooth interface would work out of the box. The one that has been tested is an EasySMX 2.4G Wireless Controller. Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
+To use *smart joystick mode*, the system requires a PS3/4 or Xbox controller (*autonomy mode* can run without a controller). Most PS3/4 and Xbox controllers with a USB or Bluetooth interface would work out of the box (Xbox Wireless USB Adapter is currently incompatible). The one that has been tested is an EasySMX 2.4G Wireless Controller. Some controllers have different modes. Make sure the controller is in the right mode (usually the factory default mode) and is powered on. If using the controller in the image, the two LEDs on top of the center button should be lit. Holding the center button for a few seconds changes the mode.
 
 <p align="center"><img src="img/ps3_controller.jpg" alt="PS3 Controller" width="50%"/></p>
 
@@ -34,7 +34,7 @@ Press any button on the controller and joystick messages should display in the t
 
 ## Quick Start
 
-To launch the code in *smart joystick mode*, make sure the controller is plugged-in,
+To launch the code in *smart joystick mode*, make sure the controller is connected,
 
 ```roslaunch vehicle_simulator system.launch```
 
@@ -54,7 +54,7 @@ Hold the mode-switch button on the controller and at the same time push the righ
 
 <p align="center"><img src="img/waypoint_following.jpg" alt="Waypoint Following" width="70%"/></p>
 
-If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/launch/local_planner.launch'. Launch the 'waypoint_example' together with the system. The system will start in *autonomy mode*. Note that you can set 'autonomyMode = true' even if a controller is plugged-in. Pressing any button on the controller will bring the system to *smart joystick mode* and holding the mode-switch button will bring the system back to *autonomy mode*.
+If a controller is unavailable, set 'autonomyMode = true' in 'src/local_planner/launch/local_planner.launch'. Launch the 'waypoint_example' together with the system. The system will start in *autonomy mode*. Note that you can set 'autonomyMode = true' even if a controller is connected. Pressing any button on the controller will bring the system to *smart joystick mode* and holding the mode-switch button will bring the system back to *autonomy mode*.
 
 ## Advanced
 
