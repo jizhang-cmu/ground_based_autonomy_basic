@@ -40,6 +40,7 @@ bool clearDyObs = false;
 double minDyObsDis = 0.3;
 double minDyObsAngle = 0;
 double minDyObsRelZ = -0.5;
+double absDyObsRelZThre = 0.2;
 double minDyObsVFOV = -16.0;
 double maxDyObsVFOV = 16.0;
 int minDyObsPointNum = 1;
@@ -205,6 +206,7 @@ int main(int argc, char** argv)
   nhPrivate.getParam("minDyObsDis", minDyObsDis);
   nhPrivate.getParam("minDyObsAngle", minDyObsAngle);
   nhPrivate.getParam("minDyObsRelZ", minDyObsRelZ);
+  nhPrivate.getParam("absDyObsRelZThre", absDyObsRelZThre);
   nhPrivate.getParam("minDyObsVFOV", minDyObsVFOV);
   nhPrivate.getParam("maxDyObsVFOV", maxDyObsVFOV);
   nhPrivate.getParam("minDyObsPointNum", minDyObsPointNum);
@@ -411,7 +413,7 @@ int main(int argc, char** argv)
 
                 float dis4 = sqrt(pointX4 * pointX4 + pointY4 * pointY4);
                 float angle4 = atan2(pointZ4, dis4) * 180.0 / PI;
-                if (angle4 > minDyObsVFOV && angle4 < maxDyObsVFOV) {
+                if (angle4 > minDyObsVFOV && angle4 < maxDyObsVFOV || fabs(pointZ4) < absDyObsRelZThre) {
                   planarVoxelDyObs[planarVoxelWidth * indX + indY]++;
                 }
               }

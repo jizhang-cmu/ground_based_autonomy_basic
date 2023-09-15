@@ -14,6 +14,7 @@
     <param name="minDyObsDis" type="double" value="0.3" />
     <param name="minDyObsAngle" type="double" value="0" />
     <param name="minDyObsRelZ" type="double" value="-0.5" />
+    <param name="absDyObsRelZThre" type="double" value="0.2" />
     <param name="minDyObsVFOV" type="double" value="-16.0" />
     <param name="maxDyObsVFOV" type="double" value="16.0" />
     <param name="minDyObsPointNum" type="int" value="1" />
